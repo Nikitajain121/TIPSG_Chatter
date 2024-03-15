@@ -12,12 +12,16 @@ from io import BytesIO
 
 os.environ["OPENAI_API_KEY"] = ""
 
+
 def main():
     st.title("Document Query App")
 
     upload_option = st.radio("Choose input method", ["Upload File", "Enter URL", "Upload CSV"])
 
     chat_history = []
+
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = []
 
     if upload_option == "Upload File":
         file = st.file_uploader("Upload a file", type=["pdf", "txt", "docx"])
@@ -26,7 +30,10 @@ def main():
                 process_document(file, chat_history)
             elif file.type == "text/plain":
                 process_document(file.read().decode("utf-8"), chat_history)
-            elif file.type in {"application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/msword"}:
+            elif file.type in {
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "application/msword",
+            }:
                 doc = DocxDocument(file)
                 full_text = "\n".join([p.text for p in doc.paragraphs])
                 process_document(full_text, chat_history)
@@ -45,8 +52,8 @@ def main():
             df = pd.read_csv(csv_file)
             process_csv(df, chat_history)
 
-
     display_chat_history(chat_history)
+
 
 if __name__ == "__main__":
     main()
