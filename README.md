@@ -29,5 +29,7 @@ Now also supports csv
 
 ![image](https://github.com/tushark01/InfoExtract/assets/70583158/74a591e7-c81b-40a3-80d2-5e4dd827bfba)
 
+![image](https://github.com/tushark01/InfoExtract/assets/70583158/592446b5-cfaa-46e4-932e-db13c97f8468)
+
 
 
