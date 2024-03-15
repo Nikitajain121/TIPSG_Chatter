@@ -9,10 +9,14 @@ from langchain.tools.base import BaseTool
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 import requests
+import io
 from io import BytesIO
 import streamlit as st
 from pdfplumber import PDF
 import textract
+import csv
+import pandas as pd
+
 
 def process_document(document, chat_history):
     if isinstance(document, (PDF, BytesIO)):
@@ -30,11 +34,9 @@ def process_document(document, chat_history):
                         raw_text += content
     elif isinstance(document, str):
         raw_text = document
-    else:
-        raw_text = textract.process(document).decode("utf-8")
 
-    text_splitter = CharacterTextSplitter(
-        separator="\n",
+
+    text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,
         chunk_overlap=200,
         length_function=len,
@@ -55,6 +57,7 @@ def process_document(document, chat_history):
             st.write(response)
     else:
         st.write("No text found in the uploaded document.")
+
 
 def process_webpage(url, chat_history):
     class WebpageQATool(BaseTool):
