@@ -4,7 +4,10 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.llms import OpenAI
 from langchain_community.chat_models import ChatOpenAI
-from langchain.chains.qa_with_sources.loading import load_qa_with_sources_chain, BaseCombineDocumentsChain
+from langchain.chains.qa_with_sources.loading import (
+    load_qa_with_sources_chain,
+    BaseCombineDocumentsChain,
+)
 from langchain.tools.base import BaseTool
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
@@ -16,7 +19,7 @@ from pdfplumber import PDF
 import textract
 import csv
 import pandas as pd
-
+from webask import get_response, get_vectorstore_from_url
 
 def process_document(document, chat_history):
     if isinstance(document, (PDF, BytesIO)):
@@ -35,11 +38,8 @@ def process_document(document, chat_history):
     elif isinstance(document, str):
         raw_text = document
 
-
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
-        chunk_overlap=200,
-        length_function=len,
+        chunk_size=800, chunk_overlap=200, length_function=len
     )
     texts = text_splitter.split_text(raw_text)
 
@@ -60,42 +60,24 @@ def process_document(document, chat_history):
 
 
 def process_webpage(url, chat_history):
-    class WebpageQATool(BaseTool):
-        name = "query_webpage"
-        description = "Browse a webpage and retrieve the information and answers relevant to the question. Please use bullet points to list the answers"
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=500,
-            chunk_overlap=20,
-            length_function=len,
-        )
-        qa_chain: BaseCombineDocumentsChain
-
-        def _run(self, url: str, question: str) -> str:
-            response = requests.get(url)
-            page_content = response.text
-            docs = [Document(page_content=page_content, metadata={"source": url})]
-            web_docs = self.text_splitter.split_documents(docs)
-            results = []
-            for i in range(0, len(web_docs), 4):
-                input_docs = web_docs[i : i + 4]
-                window_result = self.qa_chain({"input_documents": input_docs, "question": question}, return_only_outputs=True)
-                results.append(f"Response from window {i} - {window_result}")
-            results_docs = [Document(page_content="\n".join(results), metadata={"source": url})]
-            return self.qa_chain({"input_documents": results_docs, "question": question}, return_only_outputs=True)
-
-        async def _arun(self, url: str, question: str) -> str:
-            raise NotImplementedError
+    from webask import get_response, get_vectorstore_from_url
 
     if url:
-        llm = ChatOpenAI(temperature=0.5)
-        query_website_tool = WebpageQATool(qa_chain=load_qa_with_sources_chain(llm))
+        if url.endswith(".pdf"):
+            response = requests.get(url)
+            pdf_file = BytesIO(response.content)
+            process_document(pdf_file, chat_history)
+        else:
+            if "vector_store" not in st.session_state:
+                st.session_state.vector_store = get_vectorstore_from_url(url)
 
-        query = st.text_input("Enter your query")
-        if st.button("Get Answers"):
-            if query:
-                final_answer = query_website_tool._run(url, query)
-                chat_history.append((query, final_answer))
-                st.write(final_answer)
+            query = st.text_input("Enter your query")
+            if st.button("Get Answers"):
+                if query:
+                    response = get_response(query)
+                    chat_history.append((query, response))
+                    st.write(response)
+
 
 def display_chat_history(chat_history):
     st.subheader("Chat History")
