@@ -24,7 +24,7 @@ This project implements a Question-and-Answer (QnA) chatbot using Streamlit and 
 - Streamlit
 - LLAMA Index
 - OpenAI API Key
-- PDF Book (for content extraction)
+- PDF Book (for content extraction) / (Data Resource)
 
 ## Contributing
 
