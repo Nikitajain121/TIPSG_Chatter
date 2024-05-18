@@ -6,6 +6,7 @@ import openai
 from llama_index.core import SimpleDirectoryReader
 import os
 from dotenv import load_dotenv
+from streamlit_chat import message
 
 load_dotenv()
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -46,8 +47,10 @@ st.markdown("Ask me anything about TIPS-G!")
 
 # Display chat history
 for message in st.session_state.messages:
-    with st.chat_message(message["role"], avatar=USER_AVATAR if message["role"] == "user" else BOT_AVATAR):
-        st.write(message["content"])
+    if message['role'] == 'user':
+        message(message["content"], is_user=True, avatar=USER_AVATAR)
+    else:
+        message(message["content"], is_user=False, avatar=BOT_AVATAR)
 
 # Input for user question
 prompt = st.chat_input("Your question:")
@@ -58,8 +61,7 @@ if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     # Display the user's input
-    with st.chat_message("user", avatar=USER_AVATAR):
-        st.write(prompt)
+    message(prompt, is_user=True, avatar=USER_AVATAR)
 
     # Generate assistant response
     with st.chat_message("assistant", avatar=BOT_AVATAR):
