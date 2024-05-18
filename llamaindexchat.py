@@ -29,7 +29,7 @@ def load_data():
         4. If the user's question cannot be answered based on the provided context, politely inform them and suggest rephrasing or providing additional context.
         5. Remember conversation history, as the user can ask follow-up questions.
         """
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-4", temperature=0.5, max_tokens=500, system_prompt=system_prompt))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, max_tokens=500, system_prompt=system_prompt))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
     return index
 
