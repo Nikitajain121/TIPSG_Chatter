@@ -14,6 +14,8 @@ def store_user_info(user_name, contact):
         psycopg2.OperationalError: If there's an issue connecting to the database.
     """
 
+    connection = None  # Initialize connection to None
+
     try:
         # Database connection details (replace with your actual credentials)
         db_host = "localhost"
