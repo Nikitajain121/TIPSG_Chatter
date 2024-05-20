@@ -36,7 +36,9 @@ def store_user_info(user_name, contact):
         # Create a cursor object to execute database operations
         cursor = connection.cursor()
 
+        cursor.execute("SELECT * FROM any_table")
         # Prepare the SQL statement with placeholders for user_name and contact
+        print("Connecting to PostgreSQL database...")
         sql = "INSERT INTO any_table (name, contact) VALUES (%s, %s)"
 
         # Create a tuple containing the user_name and contact values
