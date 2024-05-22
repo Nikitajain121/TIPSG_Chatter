@@ -1,6 +1,6 @@
 import psycopg2
 
-def store_user_info(user_name, contact):
+def store_user_info(user_name, contact, mail_id):
     """Inserts a new row into the any_table table with the provided user_name and contact.
 
     Args:
@@ -39,10 +39,10 @@ def store_user_info(user_name, contact):
         cursor.execute("SELECT * FROM any_table")
         # Prepare the SQL statement with placeholders for user_name and contact
         print("Connecting to PostgreSQL database...")
-        sql = "INSERT INTO any_table (name, contact) VALUES (%s, %s)"
+        sql = "INSERT INTO any_table (name, contact, email) VALUES (%s, %s, %s)"
 
         # Create a tuple containing the user_name and contact values
-        val = (user_name, contact)
+        val = (user_name, contact, mail_id)
 
         # Execute the INSERT statement with the user_name and contact values
         cursor.execute(sql, val)
