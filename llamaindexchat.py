@@ -10,13 +10,27 @@ from connector import store_user_info
 import speech_recognition as sr
 import streamlit.components.v1 as components
 
+import chromadb
+from llama_index.vector_stores.chroma import ChromaVectorStore
+from llama_index.core import StorageContext
+
+
+
 load_dotenv()
 openai_api_key = os.environ.get("OPENAI_API_KEY")
+
+chroma_client = chromadb.PersistentClient(path="./chroma_db")
+chroma_collection = chroma_client.get_or_create_collection("data_collection")
 
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
 MAX_QUESTIONS = 15  # Maximum number of questions allowed per session
+
+
+vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
+storage_context = StorageContext.from_defaults(vector_store=vector_store)
+
 
 @st.cache_resource(show_spinner=True)
 def load_data():
@@ -34,7 +48,7 @@ def load_data():
         4. Remember conversation history, as the user can ask follow-up questions.
         """
         service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, max_tokens=500, system_prompt=system_prompt))
-        index = VectorStoreIndex.from_documents(docs, service_context=service_context)
+        index = VectorStoreIndex.from_documents(docs, storage_context=storage_context)
 
     return index
 
