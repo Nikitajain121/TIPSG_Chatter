@@ -1,6 +1,6 @@
 import streamlit as st
 from llama_index.core import ServiceContext, Document
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, ServiceContext, PromptTemplate
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, PromptTemplate
 from llama_index.llms.openai import OpenAI
 import openai
 from llama_index.core import SimpleDirectoryReader
@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from connector import store_user_info
 import speech_recognition as sr
 import streamlit.components.v1 as components
-from llama_index.core import Settings
+
 load_dotenv()
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 
@@ -28,12 +28,12 @@ def load_data():
         Your name is Alex. You are an expert QnA chatbot for TIPS-G, a company. Your task is to provide answers to questions based on the information in a given PDF book.
         When answering, follow these guidelines:
 
-        1. Provide concise answers in 1 to 2 sentences ( as short as u cans)
+        1. Provide concise answers in 1 to 2 sentences (as short as you can).
         2. Use the user's name in your responses when appropriate.
         3. If the user's question cannot be answered based on the provided context, politely inform them and suggest rephrasing or providing additional context.
         4. Remember conversation history, as the user can ask follow-up questions.
         """
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, max_tokens=300, system_prompt=system_prompt))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, max_tokens=500, system_prompt=system_prompt))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
 
     return index
@@ -101,25 +101,25 @@ def listen_for_audio():
     except sr.RequestError as e:
         return "Could not request results from Google Speech Recognition service; {0}".format(e)
 
-# Input for user question (text or voice)
-# Input for user question (text or voice)
-# Input for user question (text or voice)
+# Function to handle text input submission
+def submit():
+    st.session_state.user_input = st.session_state.widget
+    st.session_state.widget = ""
+
 # Input for user question (text or voice)
 input_container = st.container()
 with input_container:
     col1, col2 = st.columns([10, 1])
     with col1:
-        text_input = st.text_input(" ", key="user_input", placeholder="Your question...")
+        text_input = st.text_input(" ", key="widget", on_change=submit, placeholder="Your question...")
 
     with col2:
         voice_input = st.button("🎙️", key="voice_input_btn")
 
     if voice_input:
         prompt = listen_for_audio()
-    elif text_input:
-        prompt = text_input
     else:
-        prompt = None
+        prompt = st.session_state.user_input if "user_input" in st.session_state else None
 
     if prompt:
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -154,5 +154,6 @@ with input_container:
 
 # Clear chat history button
 if st.button("Clear Chat"):
-    st.session_state.messages = []
-    st.session_state.num_questions = 0
+    st.session_state.clear()  # Clear all session state variables
+    st.experimental_rerun()  # Immediately rerun the app to reflect changes
+
