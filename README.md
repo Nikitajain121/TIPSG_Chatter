@@ -60,6 +60,11 @@ This project implements a Question-and-Answer (QnA) chatbot using Streamlit and 
 - OpenAI API Key
 - PDF Book (for content extraction) / (Data Resource)
 
+## GPT4 + LLamaindex + ChromaDB
+
+Leveraging GPT-4's advanced language understanding and generation capabilities, LlamaIndex's efficient data indexing and semantic representation, and ChromaDB's high-performance vector storage and retrieval, this trio empowers the creation of a powerful, intelligent, and highly responsive custom interactive chatbot.
+
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
