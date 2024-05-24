@@ -73,3 +73,17 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
+## That's its Streamlit App:
+
+![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/5567677c-dd8d-4062-b507-804f97a00966)
+
+![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/fb7ffc6d-c1ea-4a36-a006-2c7e1b1bf2d3)
+
+![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/c2d88721-acbf-43a3-afc7-3621b4065ec6)
+
+
+
+
+
