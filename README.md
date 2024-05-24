@@ -61,9 +61,9 @@ Leveraging GPT's advanced language understanding and generation capabilities, Ll
 - OpenAI API Key
 - PDF Book (for content extraction) / (Data Resource)
 
-## GPT4 + LLamaindex + ChromaDB
+## GPT 4o + LLamaindex + ChromaDB
 
-Leveraging GPT-4's advanced language understanding and generation capabilities, LlamaIndex's efficient data indexing and semantic representation, and ChromaDB's high-performance vector storage and retrieval, this trio empowers the creation of a powerful, intelligent, and highly responsive custom interactive chatbot.
+Leveraging GPT-4o's advanced language understanding and generation capabilities, LlamaIndex's efficient data indexing and semantic representation, and ChromaDB's high-performance vector storage and retrieval, this trio empowers the creation of a powerful, intelligent, and highly responsive custom interactive chatbot.
 
 
 ## Contributing
