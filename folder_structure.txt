@@ -1,0 +1,27 @@
+InfoExtract/
+    audioRecognition.py
+    connector.py
+    dataloader.py
+    folder_structure.txt
+    llamaindexchat.py
+    README.md
+    requirements.txt
+    tree.py
+    chroma_db/
+        chroma.sqlite3
+        cb326a45-9b84-4c2d-8865-61ecab212c14/
+            data_level0.bin
+            header.bin
+            length.bin
+            link_lists.bin
+    data/
+        output.txt
+        TIPS-G_Course_details.pdf
+        tips_resource.pdf
+    pics/
+        flowDiag.png
+        llamaindex_flow.png
+    WebAppFiles/
+        htmlembed.html
+        srapper.py
+        style.css

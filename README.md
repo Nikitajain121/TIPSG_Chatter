@@ -11,7 +11,34 @@ This project implements a Question-and-Answer (QnA) chatbot using Streamlit and 
 - **Informative Messages**: If a user's question cannot be answered based on the provided context, the chatbot politely informs them and suggests rephrasing or providing additional context.
 
 
-![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/feee7315-c299-41ab-a233-3a9ba0727be6)
+## Directory Structure:
+
+├── audioRecognition.py
+├── chroma_db
+│   ├── cb326a45-9b84-4c2d-8865-61ecab212c14
+│   │   ├── data_level0.bin
+│   │   ├── header.bin
+│   │   ├── length.bin
+│   │   └── link_lists.bin
+│   └── chroma.sqlite3
+├── connector.py
+├── data
+│   ├── output.txt
+│   ├── TIPS-G_Course_details.pdf
+│   └── tips_resource.pdf
+├── dataloader.py
+├── folder_structure.txt
+├── llamaindexchat.py
+├── pics
+│   ├── flowDiag.png
+│   └── llamaindex_flow.png
+├── README.md
+├── requirements.txt
+├── tree.py
+└── WebAppFiles
+    ├── htmlembed.html
+    ├── srapper.py
+    └── style.css
 
 
 ## Usage
@@ -22,7 +49,7 @@ This project implements a Question-and-Answer (QnA) chatbot using Streamlit and 
 4. **Run the Application**: Execute the Streamlit app by running `streamlit run app.py` in your terminal.
 5. **Interact with the Chatbot**: Once the app is running, interact with the chatbot by asking questions in the provided input field.
 
-![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/8738f397-38fb-4d73-8295-2ed9f679145a)
+
 
 
 ## Requirements
