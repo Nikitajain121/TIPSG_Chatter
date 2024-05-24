@@ -13,32 +13,9 @@ This project implements a Question-and-Answer (QnA) chatbot using Streamlit and 
 
 ## Directory Structure:
 
-├── audioRecognition.py
-├── chroma_db
-│   ├── cb326a45-9b84-4c2d-8865-61ecab212c14
-│   │   ├── data_level0.bin
-│   │   ├── header.bin
-│   │   ├── length.bin
-│   │   └── link_lists.bin
-│   └── chroma.sqlite3
-├── connector.py
-├── data
-│   ├── output.txt
-│   ├── TIPS-G_Course_details.pdf
-│   └── tips_resource.pdf
-├── dataloader.py
-├── folder_structure.txt
-├── llamaindexchat.py
-├── pics
-│   ├── flowDiag.png
-│   └── llamaindex_flow.png
-├── README.md
-├── requirements.txt
-├── tree.py
-└── WebAppFiles
-    ├── htmlembed.html
-    ├── srapper.py
-    └── style.css
+
+![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/628df81d-4778-4eab-8330-34c2bc7ba2b7)
+
 
 
 ## Usage
