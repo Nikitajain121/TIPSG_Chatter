@@ -7,7 +7,6 @@ from llama_index.core import SimpleDirectoryReader
 import os
 from dotenv import load_dotenv
 from connector import store_user_info
-import speech_recognition as sr
 import streamlit.components.v1 as components
 
 import chromadb
@@ -15,42 +14,17 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
 
 
+from audioRecognition import listen_for_audio
+from dataloader import load_data
 
 load_dotenv()
 openai_api_key = os.environ.get("OPENAI_API_KEY")
-
-chroma_client = chromadb.PersistentClient(path="./chroma_db")
-chroma_collection = chroma_client.get_or_create_collection("data_collection")
 
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
 MAX_QUESTIONS = 15  # Maximum number of questions allowed per session
 
-
-vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
-storage_context = StorageContext.from_defaults(vector_store=vector_store)
-
-
-@st.cache_resource(show_spinner=True)
-def load_data():
-    with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
-        reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
-        docs = reader.load_data()
-
-        system_prompt = """
-        Your name is Alex. You are an expert QnA chatbot for TIPS-G, a company. Your task is to provide answers to questions based on the information in a given PDF book.
-        When answering, follow these guidelines:
-
-        1. Provide concise answers in 1 to 2 sentences (as short as you can).
-        2. Use the user's name in your responses when appropriate.
-        3. If the user's question cannot be answered based on the provided context, politely inform them and suggest rephrasing or providing additional context.
-        4. Remember conversation history, as the user can ask follow-up questions.
-        """
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, max_tokens=500, system_prompt=system_prompt))
-        index = VectorStoreIndex.from_documents(docs, storage_context=storage_context)
-
-    return index
 
 index = load_data()
 chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
@@ -98,22 +72,6 @@ with chat_container:
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
                     </div>
                 """, unsafe_allow_html=True)
-
-# Voice Input Feature
-r = sr.Recognizer()
-microphone = sr.Microphone()
-
-def listen_for_audio():
-    with microphone as source:
-        r.adjust_for_ambient_noise(source)
-        audio = r.listen(source)
-    try:
-        text = r.recognize_google(audio)
-        return text
-    except sr.UnknownValueError:
-        return "Could not understand audio"
-    except sr.RequestError as e:
-        return "Could not request results from Google Speech Recognition service; {0}".format(e)
 
 # Function to handle text input submission
 def submit():
@@ -168,6 +126,6 @@ with input_container:
 
 # Clear chat history button
 if st.button("Clear Chat"):
-    st.session_state.clear()  # Clear all session state variables
-    st.experimental_rerun()  # Immediately rerun the app to reflect changes
+    st.session_state.clear()  
+    st.experimental_rerun()  
 
