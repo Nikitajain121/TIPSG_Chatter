@@ -49,8 +49,9 @@ This project implements a Question-and-Answer (QnA) chatbot using Streamlit and 
 4. **Run the Application**: Execute the Streamlit app by running `streamlit run app.py` in your terminal.
 5. **Interact with the Chatbot**: Once the app is running, interact with the chatbot by asking questions in the provided input field.
 
+## GPT 4O + LLAMAINDEX + ChromaDB
 
-
+Leveraging GPT's advanced language understanding and generation capabilities, LlamaIndex's efficient data indexing and semantic representation, and ChromaDB's high-performance vector storage and retrieval, this trio empowers the creation of a powerful, intelligent, and highly responsive custom interactive chatbot.
 
 ## Requirements
 
