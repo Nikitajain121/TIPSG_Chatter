@@ -128,4 +128,3 @@ with input_container:
 if st.button("Clear Chat"):
     st.session_state.clear()  
     st.experimental_rerun()  
-
