@@ -12,7 +12,7 @@ import streamlit.components.v1 as components
 import chromadb
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
-
+from feedback import store_feedback
 
 from audioRecognition import listen_for_audio
 from dataloader import load_data
@@ -122,8 +122,23 @@ with input_container:
                             </div>
                         """, unsafe_allow_html=True)
 
-                st.session_state.messages.append({"role": "ALEX", "content": response.response})
+                        st.session_state.messages.append({"role": "ALEX", "content": response.response})
 
+                        # Feedback Buttons
+                        col1, col2 = st.columns([1, 1])
+                        with col1:
+                            feedback_submitted = False
+                            if not feedback_submitted:
+                                thumbs_up = st.button("👍", key=f"thumbs_up_{response.response}", on_click=store_feedback, args=(prompt, response.response, 'up'))
+                                if thumbs_up:
+                                    st.success(store_feedback(prompt, response.response, 'up'))
+                                    feedback_submitted = True
+                        with col2:
+                            if not feedback_submitted:
+                                thumbs_down = st.button("👎", key=f"thumbs_down_{response.response}", on_click=store_feedback, args=(prompt, response.response, 'down'))
+                                if thumbs_down:
+                                    st.error(store_feedback(prompt, response.response, 'down'))
+                                    feedback_submitted = True
 # Clear chat history button
 if st.button("Clear Chat"):
     st.session_state.clear()  
