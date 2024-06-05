@@ -8,10 +8,7 @@ import os
 from dotenv import load_dotenv
 from connector import store_user_info
 import streamlit.components.v1 as components
-__import__('pysqlite3')
-import sys
 
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 # from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
@@ -21,7 +18,7 @@ from llama_index.core import VectorStoreIndex,SimpleDirectoryReader,ServiceConte
 
 #from feedback import store_feedback
 
-from audioRecognition import listen_for_audio
+#from audioRecognition import listen_for_audio
 from dataloader import load_data
 
 load_dotenv()
@@ -95,10 +92,10 @@ with input_container:
     with col2:
         voice_input = st.button("🎙️", key="voice_input_btn")
 
-    if voice_input:
-        prompt = listen_for_audio()
-    else:
-        prompt = st.session_state.user_input if "user_input" in st.session_state else None
+    # if voice_input:
+    #     prompt = listen_for_audio()
+    
+    prompt = st.session_state.user_input if "user_input" in st.session_state else None
 
     if prompt:
         st.session_state.messages.append({"role": "user", "content": prompt})
