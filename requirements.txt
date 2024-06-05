@@ -246,3 +246,4 @@ wsproto==1.2.0
 yarl==1.9.4
 zipp==3.18.1
 portaudio19-dev
+python3-all-dev
