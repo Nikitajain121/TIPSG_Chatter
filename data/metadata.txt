@@ -1,0 +1,286 @@
+/** Some Ques and Answers ::
+
+1. What is TIPSG?
+Answer: TIPSG stands for Training, Internship, Placement, Salary, and Graduation. It is a comprehensive program designed to provide students with practical training, job placement assistance, and academic support after completing their 12th-grade education.
+
+************************************************************************************
+
+2. Who can enroll in tipsg?
+Answer: TIPSG is open to students who have completed their 12th-grade schooling in any stream. Whether you're interested in software development, data science, or any other technology fields, TIPSG offers programs tailored to your interests and career goals.
+
+
+************************************************************************************
+
+3. What are the benefits of enrolling in tipsg?
+Answer: By joining TIPSG, students gain access to hands-on training, industry experts, guaranteed job placements, and opportunities for career advancement. Our programs are designed to bridge the gap between academic education and professional success, ensuring that graduates are well-prepared for the workforce.
+
+
+************************************************************************************
+
+4. Is there a Job Guarantee with TIPSG?
+Answer: Yes, TIPSG offers a 100% job guarantee to students who successfully complete the program. We work closely with industry partners to match graduates with job opportunities that align with their skills and career aspirations.
+
+
+************************************************************************************
+
+5. Can I choose my specialization ?
+Answer: Yes, TIPSG offers a variety of specialization options, including software development, data science, AI/ML, Cyber security, and more. Students can choose the program that best fits their interests and career goals.
+
+
+************************************************************************************
+
+6. Tipsg scholarship available?
+Answer: TIPSG offers scholarships and financial aid options to eligible students. Our goal is to make quality education accessible to all, regardless of financial background.
+
+
+************************************************************************************
+
+7. Where are tipsg programmes offered?
+Answer: TIPSG programs are offered both at our training campuses or partner institutions.
+
+
+************************************************************************************
+
+8. How do I apply for TIPSG?
+Answer: Interested students can apply for TIPSG programs through our website or by contacting our admissions office. Our team will guide you through the application process and answer any questions you may have.
+
+************************************************************************************
+
+9. What support services are availabe to TIPSG students..
+Answer: TIPSG provides a range of support services, including career counseling, mentorship programs, and alumni networking opportunities. Our goal is to support students throughout their educational journey and beyond.
+
+
+************************************************************************************
+
+10. Address for Kotputli oFFICE..
+Answer: Sanjivni Hospital Road, Rao complex Ward no. 14, 2nd Floor, Kotputli-303108
+
+
+************************************************************************************
+
+11. Alwar office address?
+Answer: B-7, Bhagat Singh Circle, Front of Naveen School, Locality-Kailash Colony, Alwar-301001
+
+
+************************************************************************************
+
+12. What are tipsg's records/ proven records/ progresses:
+Answer:
+
+        20+ Top Tech Skills
+        Learn over 20 in-demand tech skills.
+
+        24/7 Student Support
+        Assistance for academic and career needs.
+
+        99% Employer Satisfaction
+        Higher employers satisfaction rate.
+
+        Work Environment
+        Hands-on experience on industry-relevant projects.
+
+
+
+************************************************************************************
+
+
+13. IOS App development training..
+Answer: 
+
+Apple's iOS continues to push the boundaries of innovation with amazingly universal 
+apps and an exciting user interface. iOS developers are also brilliant, think out of 
+the box, and stretch their creativity to work on excellent native iOS applications. 
+
+More than 70% of the world's population is now using iOS devices for their daily tasks using apps.
+
+The On-Job iOS App Development training course will introduce you to developing iOS apps 
+in Swift, a new programming language from Apple, and will serve as your launching point 
+into the iOS-linked degree
+
+What you'll learn
+Be able to build any app you want
+Craft a portfolio of apps to apply for junior developer jobs
+Build fully-fledged apps for your startup or business
+Work as a freelance iOS developer
+Master creating Augmented Reality apps using Apple’s new ARKit
+Create your first Machine Learning app using Apple’s new CoreML
+iOS App Development Training Course Overview
+The i OS App Store is the second largest app store market in the world, and this popularity has given rise to a massive demand for iOS app developers, who are a coveted lot, given that they design apps for it.
+
+Knowledge Hat’s introductory course on iOS development takes you through some of the basics of iOS app development using Swift; the iOS app development course by Tips-G will introduce you to essential design patterns and features and the fundamentals that form the backbone of an iOS app. Will be introduced to. You'll learn the lingo of the iOS developer and the nuances of working on this revolutionary platform. Our trainers will guide you through the do's and don'ts in the iOS development process with expertise and competence. At the last of the course, you'll be able to build an app of your own.
+
+Specifications
+100% job Placement
+
+Flexible Timing
+
+ Realtime Project Work
+
+ Learn From Experts
+
+ Get Certified
+
+iOS App Development Training Course IN-DEPTH
+You will create a portfolio of 15 apps to be able to apply for junior developer jobs at a technology company.
+You will learn Xcode, UIKit and SwiftUI, ARKit, CoreML, and CoreData.
+You will learn by doing, where every lesson is incorporated into a real-world app project.
+After the course, you can build any app you want.
+Start your own app-based business.
+Become a digital nomad by working as a freelance iOS developer
+Master creating Augmented Reality apps using Apple’s new ARKit
+Create apps that use Machine Learning using Apple’s new CoreML
+Master app design so you'll know how to wireframe, mockup, and prototype your app idea
+Why is TIPS-G the best institute to learn iOS App Development?
+Apple's iOS Training System: The Most Popular App Development Courses Ever With billions of apps passing through the store annually, Developing iOS apps is a lucrative business these days. Apple's Swift language plays a vital role in app development, but only a few go into it. New iOS app developers must decide how to adapt an iOS app to other devices and operating systems and build a sustainable maintenance system. The market for iOS app development is growing, and as newer iOS devices become more sophisticated, developers can make faster and more complex apps. Once you join an iOS app development training program, you can develop your apps or build iOS apps for companies that need them. TIPS-G offers iOS application development courses and programs designed with leaders in the field of development in mind. Students can take classes from the best and brightest and learn from across the globe per their schedule. But students can also invest in affordable, official certification for career or on-the-job use.
+
+Benefits of iOS App Development Courses and Certifications
+TIPS-G Specialized offers a professional certificate program for students who want to develop critical skills in the Swift language, build free apps, and develop paid apps for the network. The course series includes instruction for the language and building and working with augmented reality, one of the most popular app areas. You'll be ready to build apps and take them to a new level. The entire course series is designed to jump-start your creativity and career. You'll learn the product life cycle from start to finish and understand how to integrate web content, social media, and augmented reality into your new iPhone app.
+
+Our other OJT Programs Links are:
+AWS Certified Cloud Architect
+Red Hat
+Digital Marketing
+React Native
+Web Developer
+Mobile App Developer
+DevOps
+Cloud Computing
+PHP/Laravel developer
+cyberSecurity Training Course
+Iot Internet Of Things
+
+***************************************************************************
+
+14. On-Job Internet of Things (IoT) Training Course
+
+Answer: Industry experts tailor TIPS-G IoT (Internet of Things) Certification Courses. 
+        You will work on Raspberry Pi and Sense HAT and gain hands-on experience with 
+        Azure IoT Hub and Alexa Voice. It will also cover in-depth concepts such as IoT 
+        Framework, IoT Ecosystem, IoT Solution architecture, Networking Protocols, and 
+        Application Layer protocols. This course will have real-life demos and case studies 
+        that will help you master IoT technology.
+
+
+What you'll learn
+What is IoT, and how does it work
+Properties of IoT device
+IoT Ecosystem
+IoT Decision Framework
+IoT Solution Architecture Models
+How IoT is Transforming Businesses
+Major IoT Boards in the Market
+Explore Raspberry Pi
+Internet of Things (IoT) Training Course in Depth
+Learn how to Independently Design, Code, and Build IoT products.
+Learn to work with Microcontrollers (Arduino Uno, Nano, NodeMCU), Sensors, Relays, Displays, Keypads, work with main (220/110), and more.
+Learn to code using Arduino IDE from basics
+Learn how to use Ethernet and Wi-Fi shields
+Learn how to connect to cloud IOT Platforms, Persist Data, Program Triggers, and more
+Build 3 IoT products in the course
+Learn PCB designing using Fritzing
+Learn Designing, Casing, Soldering, and more
+Learn about Manufacturing, Marketing, Certification, Angels, VC, and more.
+Professionally authored, edited, carefully planned, and sequenced small lectures, most of them under 7 min and 5 min.
+Guaranteed learning in every minute!
+Specifications
+100% job Placement
+
+Flexible Timing
+
+ Realtime Project Work
+
+ Learn From Experts
+
+ Get Certified
+
+IoT Certification Training Course Overview
+IoT stands for Internet of Things. It is the interconnection of various physical objects connected with sensors, processing capabilities, software, and other technologies. Also, it connects and helps to exchange data with other devices and systems over the Internet or any other communication network. It transfers data over a wireless network without human intervention. It offers endless personal and business utility.
+
+The IoT course offered by TIPS-G IT Training Institute will help you learn IoT in the best possible way. You can connect and work with different physical objects simultaneously and receive data from all those devices simultaneously, anywhere and anytime. This course will help you learn the fundamentals of IoT, such as connecting different physical objects and integrating them to advance things like creating new devices that function independently. It will help professionals work better with IoT and help students work on their projects. You will also get a Certificate for IoT Course after successful completion.
+
+IoT Certification Course Training in Jaipur
+The main objective of this course conducted by TIPS-G is to understand the IoT ecosystem, various technologies used in IoT, and standards related to the Internet of Things. The multiple devices covered in this course are Raspberry and Arduino. A separate module is designed to explain the fundamentals of Embedded C and Python, combined with hands-on exposure to various embedded development boards such as the Raspberry Pi.
+
+Why should you choose TIPS-G IT Training Institute for the IoT certification course?
+ndustry-recognized IoT certification courses that cater to professionals with varied experience across industry sectors
+Kickstart your IoT career with knowledge gained through industry-recognized Microsoft and other IoT Certification Training
+Expert IoT instructors and hands-on exercises and lab sessions to help you gain a clear understanding of the concepts
+Internet of Things certification course material prepared by SMEs with regular content updates
+Receive Internet of Things Certification training from an Accredited Training Partner
+
+How Can Learning IoT Certification Training Benefits You?
+
+Stay relevant and ahead of your counterparts with industry-acknowledged Internet of 
+Things certification credentials.
+Create interconnected services and products through highly secure systems that exchange 
+real-time data with multiple systems through IoT technology
+Learn how to create IoT products and services that are secure and scalable across industries, 
+including Retail, Healthcare, Government, Banking, Transportation, and more
+Demonstrate commitment towards your profession by earning IoT certification, 
+which is becoming a standard for various job roles and experiences now and shortly.
+Receive higher salary packages across industry sectors for IoT-certified professionals. 
+
+PayScale.com says the average pay for IoT-certified professionals is USD 52,000 to USD 
+157,000 per annum in the US.
+Gain an in-depth understanding of the Internet of Things tech space by taking up IoT 
+certification courses from Koenig Solutions from various governing bodies
+Be part of the new norm by embracing the Internet of Things and related technologies.
+
+
+***********************************************************************
+
+15. Scholarships: 
+
+Get flat 90% Off Scholarships
+
+We will never let the financial hurdles come in between your success. To provide the whole and sole skill development platform to your brilliant and young mind.
+
+कृषि Scholarship: Get up to 90% wave off.
+
+Special farm goodies.
+Talent-based prizes up to ₹ 10 Lakh.
+
+SC/ST OBC Scholarship: Get up to 90% wave off.
+
+Free access to other industrial courses.
+Talent-based prizes up to ₹ 1 Lakh.
+
+Defense Scholarship: Get up to 90% wave off. Free access to other industrial courses. Talent-based prizes up to ₹ 5 Lakh.
+
+RNS-TAT Scholarship: Get up to 90% wave off: Get up to 90% off by applying for the RNS-TAT (Talent Acquisition Test)
+
+बेटी पढ़ाओ Scholarship: Get up to 90% wave off. Free access to other industrial courses. Talent-based prizes up to ₹ 7 Lakh.
+
+SC/ST OBC Scholarship: Get up to 90% wave off. Free access to other industrial courses. Talent-based prizes up to ₹ 1 Lakh.
+
+******************************************************************
+
+
+Q. Regarding our tie-ups with other Univsersities:
+Answer: Yes we have good collabs with the top tier private institues in India
+
+Q. Regarding Refund Policy
+Answer: Refunds for course materials and tuition will be granted at our discretion, based on the specific circumstances of each case only when all types of documents
+
+related to medical ailments are produced in front of our representatives when asked to do so. In general, we will only grant refunds for course materials and
+
+tuition if the course has not been accessed or completed, and if the request is made within 14 days of the date of purchase.
+
+
+Q. What is your address?
+Answer: Chanda Tower, 101-103, Gandhi Path W, opp. Grand Utsav Garden, near Agarwal Caters, Girnar Colony, Block E, Vaishali Nagar, Jaipur, Rajasthan 302021
+-----------------------------------------------------------------------------------------------------------------------
+"OJT (on Job training)" is a Specialized Job ready - 3 Months course, by TIPSG. Following 12 
+courses are avaiable under OJT:
+1)Digital Marketing
+2)AWS Certified Cloud Architect
+3)Cloud Computing
+4)DevOps
+5)Mobile App Developer
+6)PHP/ Laravel Developer
+7)React Native Developer
+8)Web Developer
+9)iOS App Development
+10) Internet of Things (IOT)
+11) cyberSecurity
+12) RedHat Certification

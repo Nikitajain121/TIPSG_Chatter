@@ -440,3 +440,5 @@ Maid id for all further information and contact info: info@tipsg.in
 
 google map address of main office of TIPS-G: https://www.google.com/maps/place/We+RNS+IT+Solutions+Pvt+Ltd/@26.9053004,75.7437439,17z/data=!3m1!4b1!4m6!3m5!1s0x396db54ab0ae38d5:0xe7c78760278058ed!8m2!3d26.9053004!4d75.7463188!16s%2Fg%2F11kwsmwgwz?hl=en-US&entry=ttu
 
+this is the company's / tipsg website: https://tipsg.in/
+
