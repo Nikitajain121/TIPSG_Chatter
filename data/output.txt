@@ -1,13 +1,5 @@
-[![](img/tipsg blue logo.png)](/)
+"The courses are not free"
 
-  * [Home](/)
-
-  * [About Us](about_us.php)
-  * [Courses](courses.php)
-  * [Scholarships](scholarships.php)
-  * [Partners](partner.php)
-  * [Franchise](franchise.php)
-  * [OJT](ojt.php)
 
 Get Career Consultation
 
