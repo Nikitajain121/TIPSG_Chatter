@@ -33,9 +33,16 @@ BOT_AVATAR = "🤖"
 
 MAX_QUESTIONS = 15  # Maximum number of questions allowed per session
 
+overlay_container = st.container()
+with overlay_container:
+    st.markdown("""
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.9); z-index: 9999;"></div>
+    """, unsafe_allow_html=True)
 
 index = load_data()
 chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
+# index = load_data()
+# chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
 
 # Initialize the session state with an empty list for messages and num_questions
 if "messages" not in st.session_state:
