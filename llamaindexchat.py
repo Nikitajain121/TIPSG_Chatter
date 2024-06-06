@@ -8,10 +8,10 @@ import os
 from dotenv import load_dotenv
 from connector import store_user_info
 import streamlit.components.v1 as components
-# __import__('pysqlite3')
-# import sys
+__import__('pysqlite3')
+import sys
 
-# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 # from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
