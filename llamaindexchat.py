@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(page_title="Alex AI", page_icon=":smiley:", layout="wide", initial_sidebar_state="expanded", remove_menu_brs=True)
+
 from llama_index.core import ServiceContext, Document
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, PromptTemplate
 from llama_index.llms.openai import OpenAI
