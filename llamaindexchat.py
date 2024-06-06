@@ -32,15 +32,7 @@ USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
 MAX_QUESTIONS = 15  # Maximum number of questions allowed per session
-st.markdown("""
-<style>
-.css-18e3th9 {
-    padding: 1rem 1rem 0.5rem;
-    color: #fff;
-    background-color: #2c2f33;
-}
-</style>
-""", unsafe_allow_html=True)
+
 
 index = load_data()
 chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
