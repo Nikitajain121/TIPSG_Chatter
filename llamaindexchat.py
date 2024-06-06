@@ -92,8 +92,8 @@ with input_container:
     with col1:
         text_input = st.text_input(" ", key="widget", on_change=submit, placeholder="Your question...")
 
-    with col2:
-        voice_input = st.button("🎙️", key="voice_input_btn")
+    # with col2:
+    #     voice_input = st.button("🎙️", key="voice_input_btn")
 
     # if voice_input:
     #     prompt = listen_for_audio()
