@@ -46,9 +46,6 @@ if "num_questions" not in st.session_state:
     st.session_state.num_questions = 0
 
 st.title("Alex AI - The TIPS-G Chatbot")
-st.markdown("""
-<div style="position: fixed; bottom: 0; left: 0; width: 100%; height: 40px; background-color: #2c2f33; z-index: 1;"></div>
-""", unsafe_allow_html=True)
 
 
 with st.form("user_info_form"):
