@@ -47,6 +47,15 @@ if "num_questions" not in st.session_state:
 
 st.title("Alex AI - The TIPS-G Chatbot")
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 with st.form("user_info_form"):
     st.write("Please provide your name, contact:")
     user_name = st.text_input("Name:")
