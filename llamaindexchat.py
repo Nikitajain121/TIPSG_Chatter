@@ -1,4 +1,5 @@
 import streamlit as st
+
 from llama_index.core import ServiceContext, Document
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, PromptTemplate
 from llama_index.llms.openai import OpenAI
@@ -8,7 +9,6 @@ import os
 from dotenv import load_dotenv
 from connector import store_user_info
 import streamlit.components.v1 as components
-
 __import__('pysqlite3')
 import sys
 
@@ -21,7 +21,8 @@ from llama_index.core import VectorStoreIndex,SimpleDirectoryReader,ServiceConte
 # from llama_index.llms.huggingface import HuggingFaceLLM
 
 #from feedback import store_feedback
-from audioRecognition import listen_for_audio
+
+#from audioRecognition import listen_for_audio
 from dataloader import load_data
 
 load_dotenv()
@@ -31,7 +32,6 @@ USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
 MAX_QUESTIONS = 15  # Maximum number of questions allowed per session
-
 
 index = load_data()
 chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
@@ -46,6 +46,7 @@ if "num_questions" not in st.session_state:
     st.session_state.num_questions = 0
 
 st.title("Alex AI - The TIPS-G Chatbot")
+
 
 with st.form("user_info_form"):
     st.write("Please provide your name, contact:")
@@ -92,13 +93,12 @@ with input_container:
     with col1:
         text_input = st.text_input(" ", key="widget", on_change=submit, placeholder="Your question...")
 
-    with col2:
-        voice_input = st.button("🎙️", key="voice_input_btn")
+    # with col2:
+    #     voice_input = st.button("🎙️", key="voice_input_btn")
 
-    if voice_input:
-        prompt = listen_for_audio()
-    else:
-        prompt = st.session_state.user_input if "user_input" in st.session_state else None
+    # if voice_input:
+    #     prompt = listen_for_audio()
+    prompt = st.session_state.user_input if "user_input" in st.session_state else None
 
     if prompt:
         st.session_state.messages.append({"role": "user", "content": prompt})
