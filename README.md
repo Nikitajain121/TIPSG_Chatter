@@ -53,6 +53,10 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Push to the branch (`git push origin feature/YourFeature`).
 5. Open a pull request.
 
+## Give it a try here:
+
+https://alex-ai-tipsg.streamlit.app/
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
@@ -65,6 +69,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/fb7ffc6d-c1ea-4a36-a006-2c7e1b1bf2d3)
 
 ![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/c2d88721-acbf-43a3-afc7-3621b4065ec6)
+
+## Some Snippets:
+
+![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/05036cbe-5803-4505-aa50-7bb825441c7a)
+
+![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/5e7204fa-b12e-4444-a066-be04466f0472)
+
+![image](https://github.com/tushark01/TIPSG_Chatter/assets/70583158/125141c6-9762-47a6-9ff0-e51f5e863295)
+
 
 
 
