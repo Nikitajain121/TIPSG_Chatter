@@ -39,7 +39,7 @@ chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
 # Initialize the session state with an empty list for messages and num_questions
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    initial_greeting = "Hi, I'm Alex, your AI assistant. How can I assist you today? "
+    initial_greeting = "Hi, I'm Alex, your AI assistant. How can I assist you today?"
     st.session_state.messages.append({"role": "ALEX", "content": initial_greeting})
 
 if "num_questions" not in st.session_state:
@@ -60,13 +60,14 @@ with st.form("user_info_form"):
         st.session_state.messages.append({"role": "ALEX", "content": f"Thanks for providing your information, {user_name}!"})
 
 # Display chat history
+# Display chat history
 chat_container = st.container()
 with chat_container:
     for message in st.session_state.messages:
         with st.chat_message(message["role"], avatar=USER_AVATAR if message["role"] == "user" else BOT_AVATAR):
             if message["role"] == "user":
                 st.markdown(f"""
-                    <div style="background-color: #FFFFE0; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
+                    <div style="background-color: #ADD8E6; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
                         <span style="font-size: 16px;">{message["content"]}</span>
                         <span style="font-size: 16px; font-weight: bold; margin-left: 10px;"> </span>
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
@@ -80,6 +81,7 @@ with chat_container:
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
                     </div>
                 """, unsafe_allow_html=True)
+
 
 # Function to handle text input submission
 def submit():
@@ -110,7 +112,7 @@ with input_container:
             with chat_container:
                 with st.chat_message("user", avatar=USER_AVATAR):
                     st.markdown(f"""
-                        <div style="background-color: #FFFFE0; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
+                        <div style="background-color: #ADD8E6; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
                             <span style="font-size: 16px;">{prompt}</span>
                             <span style="font-size: 16px; font-weight: bold; margin-left: 10px;"> </span>
                             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
@@ -131,22 +133,8 @@ with input_container:
 
                         st.session_state.messages.append({"role": "ALEX", "content": response.response})
 
-                        # Feedback Buttons
-                        # col1, col2 = st.columns([1, 1])
-                        # with col1:
-                        #     feedback_submitted = False
-                        #     if not feedback_submitted:
-                        #         thumbs_up = st.button("👍", key=f"thumbs_up_{response.response}", on_click=store_feedback, args=(prompt, response.response, 'up'))
-                        #         if thumbs_up:
-                        #             st.success(store_feedback(prompt, response.response, 'up'))
-                        #             feedback_submitted = True
-                        # with col2:
-                        #     if not feedback_submitted:
-                        #         thumbs_down = st.button("👎", key=f"thumbs_down_{response.response}", on_click=store_feedback, args=(prompt, response.response, 'down'))
-                        #         if thumbs_down:
-                        #             st.error(store_feedback(prompt, response.response, 'down'))
-                        #             feedback_submitted = True
-# Clear chat history button
+                        
+
 if st.button("Clear Chat"):
     st.session_state.clear()  
     st.experimental_rerun()  
