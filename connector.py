@@ -18,11 +18,11 @@ def store_user_info(user_name, contact, mail_id):
 
     try:
         # Database connection details (replace with your actual credentials)
-        db_host = "localhost"
+        db_host = "98.70.11.123"
         db_user = "postgres"
-        db_password = "123456"
+        db_password = "postgre"
         db_name = "postgres"
-        db_port = 5432
+        db_port = 3002
 
         # Establish a connection to the PostgreSQL database
         connection = psycopg2.connect(
