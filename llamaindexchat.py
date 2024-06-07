@@ -39,7 +39,7 @@ chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
 # Initialize the session state with an empty list for messages and num_questions
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    initial_greeting = "Hi, I'm Alex, your AI assistant. How can I assist you today? May I know your name?"
+    initial_greeting = "Hi, I'm Alex, your AI assistant. How can I assist you today? "
     st.session_state.messages.append({"role": "ALEX", "content": initial_greeting})
 
 if "num_questions" not in st.session_state:
