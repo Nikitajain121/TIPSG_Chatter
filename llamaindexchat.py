@@ -9,20 +9,20 @@ import os
 from dotenv import load_dotenv
 from connector import store_user_info
 import streamlit.components.v1 as components
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lsa import LsaSummarizer
+from sumy.summarizers.text_rank import TextRankSummarizer
+
 __import__('pysqlite3')
 import sys
 
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
-# from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
 
 from llama_index.core import VectorStoreIndex,SimpleDirectoryReader,ServiceContext,PromptTemplate
-# from llama_index.llms.huggingface import HuggingFaceLLM
 
-#from feedback import store_feedback
-
-#from audioRecognition import listen_for_audio
 from dataloader import load_data
 
 load_dotenv()
@@ -47,7 +47,6 @@ if "num_questions" not in st.session_state:
 
 st.title("Alex AI - The TIPS-G Chatbot")
 
-
 with st.form("user_info_form"):
     st.write("Please provide your name, contact:")
     user_name = st.text_input("Name:")
@@ -59,47 +58,84 @@ with st.form("user_info_form"):
         store_user_info(user_name, contact, mail_id)
         st.session_state.messages.append({"role": "ALEX", "content": f"Thanks for providing your information, {user_name}!"})
 
-# Display chat history
+# Function to summarize responses
+def summarize_response(response, sentence_count=3):
+    parser = PlaintextParser.from_string(response, Tokenizer('english'))
+    summarizer = LsaSummarizer()  # Or TextRankSummarizer()
+    summary = summarizer(parser.document, sentence_count)
+    return ' '.join([str(sentence) for sentence in summary])
+
+# Custom CSS for responsive design
+st.markdown("""
+    <style>
+    .stApp {
+        overflow: hidden;
+    }
+    .chat-bubble {
+        background-color: #ADD8E6;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        word-wrap: break-word;
+    }
+    .bot-bubble {
+        background-color: #FFC0CB;
+    }
+    .chat-message {
+        font-size: 16px;
+    }
+    .chat-message-user::before {
+        content: "👤";
+        margin-right: 10px;
+        font-size: 1.5em;
+    }
+    .chat-message-alex::before {
+        content: "🤖";
+        margin-right: 10px;
+        font-size: 1.5em;
+    }
+    @media (max-width: 600px) {
+        .chat-bubble, .bot-bubble {
+            padding: 5px;
+            font-size: 14px;
+        }
+        .stTextInput, .stButton {
+            width: 100%;
+            font-size: 14px;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Display chat history
 chat_container = st.container()
 with chat_container:
     for message in st.session_state.messages:
-        with st.chat_message(message["role"], avatar=USER_AVATAR if message["role"] == "user" else BOT_AVATAR):
-            if message["role"] == "user":
-                st.markdown(f"""
-                    <div style="background-color: #ADD8E6; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
-                        <span style="font-size: 16px;">{message["content"]}</span>
-                        <span style="font-size: 16px; font-weight: bold; margin-left: 10px;"> </span>
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
-                    </div>
-                """, unsafe_allow_html=True)
-            else:
-                st.markdown(f"""
-                    <div style="background-color: #FFC0CB; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
-                        <span style="font-size: 16px; font-weight: bold; margin-right: 10px;">{message["role"]} </span>
-                        <span style="font-size: 16px;">{message["content"]}</span>
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
-                    </div>
-                """, unsafe_allow_html=True)
-
+        if message["role"] == "user":
+            st.markdown(f"""
+                <div class="chat-bubble">
+                    <span class="chat-message chat-message-user">{message["content"]}</span>
+                </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+                <div class="chat-bubble bot-bubble">
+                    <span class="chat-message chat-message-alex">{message["content"]}</span>
+                </div>
+            """, unsafe_allow_html=True)
 
 # Function to handle text input submission
 def submit():
     st.session_state.user_input = st.session_state.widget
     st.session_state.widget = ""
 
-# Input for user question (text or voice)
+# Input for user question
 input_container = st.container()
 with input_container:
-    col1, col2 = st.columns([10, 1])
-    with col1:
-        text_input = st.text_input(" ", key="widget", on_change=submit, placeholder="Your question...")
+    text_input = st.text_input(" ", key="widget", on_change=submit, placeholder="Your question...", label_visibility='collapsed')
 
-    # with col2:
-    #     voice_input = st.button("🎙️", key="voice_input_btn")
-
-    # if voice_input:
-    #     prompt = listen_for_audio()
     prompt = st.session_state.user_input if "user_input" in st.session_state else None
 
     if prompt:
@@ -110,31 +146,34 @@ with input_container:
             st.warning(f"You have reached the maximum number of questions allowed in this session. For more details, you can contact us at +91 7023340831, or visit us at Chanda Tower, Girnar Colony, Gandhi Path Road, Vaishali Nagar, Jaipur -302021")
         else:
             with chat_container:
-                with st.chat_message("user", avatar=USER_AVATAR):
-                    st.markdown(f"""
-                        <div style="background-color: #ADD8E6; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
-                            <span style="font-size: 16px;">{prompt}</span>
-                            <span style="font-size: 16px; font-weight: bold; margin-left: 10px;"> </span>
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
-                        </div>
-                    """, unsafe_allow_html=True)
+                st.markdown(f"""
+                    <div class="chat-bubble">
+                        <span class="chat-message chat-message-user">{prompt}</span>
+                    </div>
+                """, unsafe_allow_html=True)
 
-                with st.chat_message("ALEX", avatar=BOT_AVATAR):
-                    with st.spinner("Thinking..."):
-                        response = chat_engine.chat(prompt)
-                        response.response = " " + response.response
+                with st.spinner("Thinking..."):
+                    response = chat_engine.chat(prompt)
+                    response.response = " " + response.response
+
+                    # Summarize if too long
+                    max_words = 35
+                    if len(response.response.split()) > max_words:
+                        summarized_response = summarize_response(response.response, sentence_count=2)
+                        st.session_state.messages.append({"role": "ALEX", "content": summarized_response})
                         st.markdown(f"""
-                            <div style="background-color: #FFC0CB; padding: 10px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center;">
-                                <span style="font-size: 16px; font-weight: bold; margin-right: 10px;"> ALEX </span>
-                                <span style="font-size: 16px;">{response.response}</span>
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAlIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjUuNjU2MjUgMTYuMjY0NjkgTDI0LjYyNjU2IDI3Ljk3MjE5TDI2LjkyNjU2IDMwLjY4MjE5TDI2Ljg2NjU2IDMwLjY4MjE5TDI1LjY1NjI1IDE2LjI2NDY5eiIvPjwvc3ZnPg==" alt="Chat Bubble Tail" width="20" height="20" style="margin-left: 10px; position: relative; top: -2px;">
+                            <div class="chat-bubble bot-bubble">
+                                <span class="chat-message chat-message-alex">{summarized_response}</span>
+                            </div>
+                        """, unsafe_allow_html=True)
+                    else:  # Response is within the word limit
+                        st.session_state.messages.append({"role": "ALEX", "content": response.response})
+                        st.markdown(f"""
+                            <div class="chat-bubble bot-bubble">
+                                <span class="chat-message chat-message-alex">{response.response}</span>
                             </div>
                         """, unsafe_allow_html=True)
 
-                        st.session_state.messages.append({"role": "ALEX", "content": response.response})
-
-                        
-
 if st.button("Clear Chat"):
-    st.session_state.clear()  
-    st.experimental_rerun()  
+    st.session_state.clear()
+    st.experimental_rerun()
