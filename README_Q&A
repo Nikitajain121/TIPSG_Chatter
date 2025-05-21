@@ -146,3 +146,42 @@ By deploying it with:
 - CI/CD pipelines and containerization (e.g., Docker)
 
 ---
+## How did you implement storing user information in the PostgreSQL database?
+
+**Answer:**  
+I used the `psycopg2` Python library to connect and interact with a PostgreSQL database. The process involved:
+
+- Establishing a connection to the PostgreSQL server using credentials like host, user, password, database name, and port.
+- Creating a cursor object to execute SQL commands.
+- Writing an `INSERT` SQL statement with placeholders for user data (`user_name`, `contact`, `mail_id`).
+- Executing the query with the provided values safely to avoid SQL injection.
+- Committing the transaction to save changes.
+- Handling exceptions such as connection errors.
+- Closing the cursor and connection in a `finally` block to ensure proper resource cleanup.
+
+Example code snippet:
+
+```python
+import psycopg2
+
+def store_user_info(user_name, contact, mail_id):
+    try:
+        connection = psycopg2.connect(
+            host="98.70.11.123",
+            user="postgres",
+            password="postgre",
+            database="postgres",
+            port=3002
+        )
+        cursor = connection.cursor()
+        sql = "INSERT INTO any_table (user_name, contact, mail_id) VALUES (%s, %s, %s)"
+        val = (user_name, contact, mail_id)
+        cursor.execute(sql, val)
+        connection.commit()
+        print(cursor.rowcount, "record inserted")
+    except psycopg2.OperationalError as err:
+        print("Error connecting to PostgreSQL database:", err)
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
