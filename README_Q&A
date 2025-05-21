@@ -223,3 +223,59 @@ def store_feedback(question, answer, feedback):
 
     return "Thank you for your feedback!"
 
+## 1. What was the objective or problem your LlamaIndex chatbot project aimed to solve?
+
+**Answer:**  
+The objective of the project was to build an intelligent Q&A chatbot that can answer user queries based on uploaded PDF documents. The chatbot leverages LlamaIndex to efficiently index and retrieve information from large text sources, enabling fast and accurate responses without manual search.
+
+---
+
+## 2. What technologies and tools did you use, and why?
+
+**Answer:**  
+I used the following technologies:  
+- **LlamaIndex:** To create an index over documents and enable efficient retrieval of relevant information.  
+- **OpenAI GPT-4o:** As the underlying language model to generate conversational responses.  
+- **Streamlit:** For building an interactive web interface that allows users to upload PDFs and chat with the bot.  
+- **ChromaDB:** For vector database storage to facilitate similarity search.  
+
+These tools together enable a scalable, easy-to-use, and performant chatbot solution.
+
+---
+
+## 3. What challenges did you face during the project and how did you overcome them?
+
+**Answer:**  
+A key challenge was managing large documents and ensuring quick retrieval without losing context. To address this, I used LlamaIndex's chunking and summarization features to break down large texts into manageable pieces while preserving meaning. Another challenge was maintaining conversational context, which I handled by storing user session history and feeding relevant context into the model for follow-up questions.
+
+---
+
+## 4. How did you ensure the scalability and reliability of your chatbot?
+
+**Answer:**  
+I designed the architecture with modular components: the indexing, querying, and user interface layers are decoupled. Using Streamlit allowed rapid prototyping and deployment. ChromaDB provided scalable vector storage, allowing the system to handle more documents without performance loss. Additionally, I implemented error handling for user inputs and model API calls to maintain smooth interaction.
+
+---
+
+## 5. Can you explain a specific module or function in your LlamaIndex chatbot and how it works?
+
+**Answer:**  
+Sure. The core function is document indexing and query response:  
+
+1. User uploads PDF documents via Streamlit.  
+2. LlamaIndex processes these PDFs, chunks the text, and creates an index.  
+3. When a user asks a question, the chatbot queries the index to retrieve the most relevant text chunks.  
+4. These chunks are sent to GPT-4o for generating a contextual response.  
+
+This pipeline enables quick and accurate answers based on the uploaded content.
+
+```python
+from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader
+
+# Load documents and create index
+documents = SimpleDirectoryReader('docs').load_data()
+index = GPTVectorStoreIndex.from_documents(documents)
+
+# Query index for relevant info
+response = index.query("What is the main idea of document X?")
+print(response)
