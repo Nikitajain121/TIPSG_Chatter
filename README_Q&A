@@ -1,1 +1,148 @@
 
+# 🤖 Interview Q&A: Streamlit + LlamaIndex Chatbot Project
+
+## 1. What is the purpose of using `llama_index` in your chatbot project?
+**Answer:**  
+`llama_index` (formerly GPT Index) allows efficient retrieval of information from documents by creating vector indexes. In this project, it is used to turn directory-based documents into a searchable index that the chatbot can query in a conversational manner.
+
+---
+
+## 2. Explain the role of `VectorStoreIndex` in the chatbot.
+**Answer:**  
+`VectorStoreIndex` stores vector embeddings of documents. It enables semantic search and retrieval of the most relevant document chunks based on user queries, supporting intelligent response generation.
+
+---
+
+## 3. How does `SimpleDirectoryReader` work?
+**Answer:**  
+`SimpleDirectoryReader` reads all text-based documents from a specified directory, parses them into `Document` objects, and returns them for further indexing.
+
+---
+
+## 4. What does `chat_mode="condense_question"` mean?
+**Answer:**  
+This mode reformulates follow-up questions into standalone ones. It helps the chatbot maintain context in multi-turn conversations by condensing the user’s query using chat history.
+
+---
+
+## 5. Why do we use `dotenv` in this project?
+**Answer:**  
+The `.env` file stores sensitive environment variables like the OpenAI API key. `dotenv` is used to load these variables securely into the application at runtime without hardcoding secrets.
+
+---
+
+## 6. How is the OpenAI API key accessed securely?
+**Answer:**  
+The key is stored in a `.env` file and accessed via `os.environ.get("OPENAI_API_KEY")`, ensuring the actual key is not exposed in the source code.
+
+---
+
+## 7. What does `index.as_chat_engine()` do?
+**Answer:**  
+This converts the vector index into a chat engine that can handle queries conversationally. It supports chat history and advanced prompting modes for interactive Q&A.
+
+---
+
+## 8. What does `chat_engine.chat(prompt)` return?
+**Answer:**  
+It sends the prompt to the LLM-powered engine and returns a response based on the most relevant indexed documents and conversational context.
+
+---
+
+## 9. What is the purpose of `MAX_QUESTIONS`?
+**Answer:**  
+This constant limits the number of user queries per session to prevent overload or abuse and to encourage structured interactions.
+
+---
+
+## 10. What is the use of `PromptTemplate` in LlamaIndex?
+**Answer:**  
+`PromptTemplate` allows you to customize the format of prompts sent to the language model, giving you better control over the behavior and tone of the chatbot.
+
+---
+
+## 11. Why is summarization used for long responses?
+**Answer:**  
+To ensure clarity and avoid overwhelming the user with long answers, the response is summarized using LSA or TextRank if it exceeds a specific word limit.
+
+---
+
+## 12. What is the difference between `LsaSummarizer` and `TextRankSummarizer`?
+**Answer:**  
+- `LsaSummarizer`: Uses Latent Semantic Analysis to extract important sentences based on concept frequency.
+- `TextRankSummarizer`: Graph-based ranking algorithm that identifies important sentences through sentence similarity.
+
+---
+
+## 13. How is session state managed in Streamlit?
+**Answer:**  
+`st.session_state` is used to persist user messages, number of questions, and other session variables across reruns, enabling continuous interaction.
+
+---
+
+## 14. What is the function of `st.form()` in your chatbot?
+**Answer:**  
+`st.form()` is used to collect user details like name, contact, and email in a structured and grouped format, submitting all fields together.
+
+---
+
+## 15. How is the chat history displayed?
+**Answer:**  
+HTML and CSS are used inside `st.markdown()` to render styled chat bubbles with avatars and timestamps in a readable format.
+
+---
+
+## 16. How is the chatbot responsive on mobile?
+**Answer:**  
+Custom CSS using media queries adapts padding, font size, and input field widths to ensure a good user experience on smaller screens.
+
+---
+
+## 17. How does `store_user_info()` work?
+**Answer:**  
+It's a custom function likely defined in the `connector` module, used to store or log user input (name, contact, email) for feedback or analytics.
+
+---
+
+## 18. What does `load_data()` from `dataloader` likely do?
+**Answer:**  
+It initializes and returns the `VectorStoreIndex` by loading and indexing document data from the file system.
+
+---
+
+## 19. Why is `sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')` used?
+**Answer:**  
+This monkey-patches the Python interpreter to use `pysqlite3` instead of the default `sqlite3`. It’s useful when compatibility issues or advanced SQLite features are required.
+
+---
+
+## 20. What happens when the user clicks “Clear Chat”?
+**Answer:**  
+The `st.session_state` is cleared using `st.session_state.clear()` and the app is rerun with `st.experimental_rerun()`, effectively resetting the chatbot.
+
+---
+
+## 21. How does the chatbot limit user queries?
+**Answer:**  
+It tracks the number of user queries in `st.session_state.num_questions` and compares it to `MAX_QUESTIONS`. When exceeded, a warning message is shown.
+
+---
+
+## 22. What are some alternatives to `LlamaIndex` and `Streamlit`?
+**Answer:**  
+Alternatives include:
+- **For LlamaIndex**: LangChain, Haystack, RAGStack
+- **For Streamlit**: Gradio, Flask + HTML, Dash
+
+---
+
+## 23. How can this chatbot be scaled for production?
+**Answer:**  
+By deploying it with:
+- Backend APIs using FastAPI/Flask
+- Caching responses
+- Cloud storage for documents
+- Persistent vector stores like Pinecone or ChromaDB
+- CI/CD pipelines and containerization (e.g., Docker)
+
+---
